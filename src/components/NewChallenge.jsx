@@ -57,7 +57,12 @@ export default function NewChallenge({ onDone }) {
           <input ref={deadline} type="date" name="deadline" id="deadline" />
         </p>
 
-        <ul id="new-challenge-images">
+        <motion.ul
+          variants={{
+            visible: { transition: { staggerChildren: 0.1, type: "spring" } },
+          }}
+          id="new-challenge-images"
+        >
           {images.map((image) => (
             // using variant properties here
             <motion.li
@@ -65,9 +70,11 @@ export default function NewChallenge({ onDone }) {
                 visible: { opacity: 1, y: 0 },
                 hidden: { opacity: 0, y: 30 },
               }}
-              // overriding variant properties here if we assign key name  then animation won't work
-              // we have to assign value like this in ex:- exit prop
+              /*{
+              overriding variant properties here if we assign key name  then animation won't work
+              we have to assign value like this in ex:- exit prop }*/
               exit={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring" }}
               key={image.alt}
               onClick={() => handleSelectImage(image)}
               className={selectedImage === image ? "selected" : undefined}
@@ -75,7 +82,7 @@ export default function NewChallenge({ onDone }) {
               <img {...image} />
             </motion.li>
           ))}
-        </ul>
+        </motion.ul>
 
         <p className="new-challenge-actions">
           <button type="button" onClick={onDone}>
