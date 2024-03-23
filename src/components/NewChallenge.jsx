@@ -1,8 +1,9 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useRef, useState } from "react";
 
-import { ChallengesContext } from '../store/challenges-context.jsx';
-import Modal from './Modal.jsx';
-import images from '../assets/images.js';
+import { ChallengesContext } from "../store/challenges-context.jsx";
+import Modal from "./Modal.jsx";
+import images from "../assets/images.js";
+import { motion } from "framer-motion";
 
 export default function NewChallenge({ onDone }) {
   const title = useRef();
@@ -58,13 +59,21 @@ export default function NewChallenge({ onDone }) {
 
         <ul id="new-challenge-images">
           {images.map((image) => (
-            <li
+            // using variant properties here
+            <motion.li
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 30 },
+              }}
+              // overriding variant properties here if we assign key name  then animation won't work
+              // we have to assign value like this in ex:- exit prop
+              exit={{ opacity: 1, y: 0 }}
               key={image.alt}
               onClick={() => handleSelectImage(image)}
-              className={selectedImage === image ? 'selected' : undefined}
+              className={selectedImage === image ? "selected" : undefined}
             >
               <img {...image} />
-            </li>
+            </motion.li>
           ))}
         </ul>
 
