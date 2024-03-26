@@ -1,6 +1,7 @@
 Project Description
 
 <a href="https://react-challanger.netlify.app/">Challenger</a>
+
 Challenger is an innovative web application developed using React.js and Framer Motion for animation, offering users a dynamic platform to create, track, and conquer personal challenges. Whether it's fitness goals, learning new skills, or personal development milestones, Challenger empowers users to set, monitor, and celebrate their achievements with style and flair.
 Key Features:
 Interactive Challenge Creation: Users can easily create custom challenges tailored to their specific goals and interests. The intuitive interface allows for seamless input of challenge details such as title, description, duration, and associated tasks.
